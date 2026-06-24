@@ -1,0 +1,54 @@
+References
+
+1. Shor, P. W. (1994). Algorithms for Quantum Computation: Discrete Logarithms and Factoring. Proceedings of the 35th Annual Symposium on Foundations of Computer Science (FOCS), 124-134. IEEE. doi:10.1109/SFCS.1994.365700.
+
+
+2. National Institute of Standards and Technology (NIST). (2023). Post-Quantum Cryptography Standardization. Retrieved from https://csrc.nist.gov/projects/post-quantum-cryptography
+
+
+3. Ben-Sasson, E., Bentov, I., Horesh, Y., & Riabzev, M. (2018). Scalable Zero Knowledge with no Trusted Setup. In Annual International Conference on the Theory and Applications of Cryptographic Techniques (pp. 456-486). Springer, Cham. doi:10.1007/978-3-030-11479-7_16.
+
+
+4. Peikert, C. (2014). Lattice Cryptography for the Internet. In Advances in Cryptology – ASIACRYPT 2014 (pp. 197-219). Springer, Berlin, Heidelberg. doi:10.1007/978-3-662-45608-8_10.
+
+
+5. Hoffstein, J., Pipher, J., & Silverman, J. H. (1998). NTRU: A Ring-Based Public Key Cryptosystem. Algorithmic Number Theory Symposium (ANTS), 267-288. doi:10.1007/3-540-61735-6_27.
+
+
+6. Ducas, L., Durmus, A., Lepoint, T., & Lyubashevsky, V. (2013). Lattice Signatures and Bimodal Gaussians. In Advances in Cryptology – CRYPTO 2013 (pp. 40-56). Springer, Berlin, Heidelberg. doi:10.1007/978-3-642-40041-4_3.
+
+
+7. Lyubashevsky, V., Peikert, C., & Regev, O. (2013). On Ideal Lattices and Learning with Errors over Rings. Journal of the ACM (JACM), 60(6), 43. doi:10.1145/2535925.
+
+
+8. Rivest, R. L., Shamir, A., & Adleman, L. (1978). A Method for Obtaining Digital Signatures and Public-Key Cryptosystems. Communications of the ACM, 21(2), 120-126. doi:10.1145/359340.359342.
+
+
+9. Gentry, C. (2009). Fully Homomorphic Encryption Using Ideal Lattices. Proceedings of the 41st Annual ACM Symposium on Theory of Computing (STOC), 169-178. doi:10.1145/1536414.1536440.
+
+
+10. Boneh, D., & Franklin, M. (2001). Identity-Based Encryption from the Weil Pairing. Advances in Cryptology – CRYPTO 2001, 213-229. doi:10.1007/3-540-44647-8_13.
+
+
+11. Harrow, A. W., Hassidim, A., & Lloyd, S. (2009). Quantum Algorithm for Linear Systems of Equations. Physical Review Letters, 103(15), 150502. doi:10.1103/PhysRevLett.103.150502.
+
+
+12. Grover, L. K. (1996). A Fast Quantum Mechanical Algorithm for Database Search. Proceedings of the Twenty-Eighth Annual ACM Symposium on Theory of Computing (STOC), 212-219. doi:10.1145/237814.237866.
+
+
+13. Buchmann, J., Ding, J., & Lindner, R. (2008). Post-Quantum Cryptography: State of the Art and Open Problems. PQCrypto 2008: Post-Quantum Cryptography, 88-107. doi:10.1007/978-3-540-88702-7_8.
+
+
+14. Mandelbrot, B. B. (1982). The Fractal Geometry of Nature. W. H. Freeman and Company.
+
+
+15. Nakamoto, S. (2008). Bitcoin: A Peer-to-Peer Electronic Cash System. Retrieved from https://bitcoin.org/bitcoin.pdf.
+
+
+16. Goldwasser, S., Micali, S., & Rackoff, C. (1989). The Knowledge Complexity of Interactive Proof Systems. SIAM Journal on Computing, 18(1), 186-208. doi:10.1137/0218012.
+
+
+17. Zooko, W. (2008). The Dilemma of Naming. Retrieved from [https://www.zooko.com/talks.html](https://www.zooko
+
+
+
