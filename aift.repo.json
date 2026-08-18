@@ -1,13 +1,14 @@
 {
   "schema": "https://aifreedomtrust.org/schemas/aift.repo.schema.json",
   "name": "AetherianGovernance",
-  "layer": "federated",
-  "role": "federated repository participating in the AIFT operating system",
+  "layer": "governance",
+  "role": "Aetherian governance, delegated authority, policy, consent, decision records, and constitutional governance interfaces",
   "workspacePath": "/data/data/com.termux/files/home/AIFT/AetherianGovernance",
   "federation": {
     "workspace": "AIFT",
     "controlPlane": "/data/data/com.termux/files/home/AIFT/aift-os.sh",
-    "manifest": "/data/data/com.termux/files/home/AIFT/manifests/workspace.json"
+    "manifest": "/data/data/com.termux/files/home/AIFT/manifests/workspace.json",
+    "doctrine": "AI-Freedom-Trust/SOP-ALOHA-001.md"
   },
   "commands": {
     "status": "git status --short",
@@ -18,6 +19,7 @@
     "localFirst": true,
     "inspectable": true,
     "sovereignByDefault": true,
-    "aiBehindProviderInterfaces": true
+    "aiBehindProviderInterfaces": true,
+    "humanAuthorityForHighImpactDecisions": true
   }
 }
