@@ -71,7 +71,7 @@
       "name": "sync",
       "status": "ready",
       "version": 0,
-      "command": "git remote/status",
+      "command": "git remote -v && git status --short",
       "evidence": "git repository detected; safe sync can inspect this repo",
       "description": "Synchronize safely",
       "lastChecked": "2026-06-30T23:37:27Z"
