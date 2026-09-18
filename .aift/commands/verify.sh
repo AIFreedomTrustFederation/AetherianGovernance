@@ -20,7 +20,9 @@ for path in manifest_paths:
     with path.open(encoding="utf-8") as handle:
         documents[path.as_posix()] = json.load(handle)
 
-expected_repo = root.name
+expected_repo = documents["aift.repo.json"].get("name")
+if not isinstance(expected_repo, str) or not expected_repo:
+    raise SystemExit("aift.repo.json must declare a repository name")
 declared_names = {
     document[key]
     for document in documents.values()
