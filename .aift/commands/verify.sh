@@ -55,7 +55,26 @@ for capability in capabilities:
     if not command_path.is_file():
         raise SystemExit(f"missing capability command: {command}")
 
+event_contract = documents[".aift/events.json"]
+declared_events = []
+for direction in ("publishes", "subscribes"):
+    for event in event_contract.get(direction, []):
+        name = event.get("name")
+        if not isinstance(name, str) or not name:
+            raise SystemExit(f"{direction} event must declare a non-empty name")
+        declared_events.append(name)
+if len(declared_events) != len(set(declared_events)):
+    raise SystemExit("federation event names must be unique")
+
+for service in documents[".aift/services.json"].get("services", []):
+    for event_name in service.get("events", []):
+        if event_name not in declared_events:
+            raise SystemExit(
+                f"service {service.get('name')!r} references undeclared event {event_name!r}"
+            )
+
 print(f"validated {len(documents)} federation manifests and {len(capabilities)} capabilities")
+print(f"validated {len(declared_events)} declared service events")
 
 tracked = subprocess.run(
     ["git", "ls-files", "-z", "*.sh"],
