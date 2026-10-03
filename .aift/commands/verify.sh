@@ -54,6 +54,10 @@ for capability in capabilities:
     command_path = root.joinpath(*candidate.parts)
     if not command_path.is_file():
         raise SystemExit(f"missing capability command: {command}")
+    try:
+        command_path.resolve(strict=True).relative_to(root.resolve(strict=True))
+    except (OSError, ValueError):
+        raise SystemExit(f"capability command resolves outside repository: {command!r}")
 
 event_contract = documents[".aift/events.json"]
 declared_events = []
