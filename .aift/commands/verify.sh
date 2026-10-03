@@ -66,15 +66,23 @@ for direction in ("publishes", "subscribes"):
 if len(declared_events) != len(set(declared_events)):
     raise SystemExit("federation event names must be unique")
 
-for service in documents[".aift/services.json"].get("services", []):
+services = documents[".aift/services.json"].get("services", [])
+service_names = []
+for service in services:
+    service_name = service.get("name")
+    if not isinstance(service_name, str) or not service_name:
+        raise SystemExit("federation service must declare a non-empty name")
+    service_names.append(service_name)
     for event_name in service.get("events", []):
         if event_name not in declared_events:
             raise SystemExit(
-                f"service {service.get('name')!r} references undeclared event {event_name!r}"
+                f"service {service_name!r} references undeclared event {event_name!r}"
             )
+if len(service_names) != len(set(service_names)):
+    raise SystemExit("federation service names must be unique")
 
 print(f"validated {len(documents)} federation manifests and {len(capabilities)} capabilities")
-print(f"validated {len(declared_events)} declared service events")
+print(f"validated {len(services)} services and {len(declared_events)} declared events")
 
 tracked = subprocess.run(
     ["git", "ls-files", "-z", "*.sh"],
