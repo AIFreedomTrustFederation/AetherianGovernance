@@ -15,10 +15,22 @@ manifest_paths = [Path("aift.repo.json"), *sorted(Path(".aift").glob("*.json"))]
 if not manifest_paths:
     raise SystemExit("no federation manifests found")
 
+
+def reject_duplicate_keys(pairs):
+    document = {}
+    for key, value in pairs:
+        if key in document:
+            raise ValueError(f"duplicate JSON key: {key!r}")
+        document[key] = value
+    return document
+
+
 documents = {}
 for path in manifest_paths:
     with path.open(encoding="utf-8") as handle:
-        documents[path.as_posix()] = json.load(handle)
+        documents[path.as_posix()] = json.load(
+            handle, object_pairs_hook=reject_duplicate_keys
+        )
 
 expected_repo = documents["aift.repo.json"].get("name")
 if not isinstance(expected_repo, str) or not expected_repo:
