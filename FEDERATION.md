@@ -2,11 +2,11 @@
 
 ## Layer
 
-`federated`
+`governance`
 
 ## Role
 
-federated repository participating in the AIFT operating system
+Aetherian governance, delegated authority, policy, consent, decision records, and constitutional governance interfaces
 
 ## Operating Principle
 

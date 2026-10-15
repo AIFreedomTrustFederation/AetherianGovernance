@@ -46,6 +46,32 @@ if declared_names != {expected_repo}:
         f"repository identity mismatch: expected {expected_repo!r}, found {sorted(declared_names)!r}"
     )
 
+# FEDERATION.md is a discovery surface, not an independent authority source.
+# Reject contradictory layer/role claims before reporting federation integrity.
+manifest = documents["aift.repo.json"]
+federation_lines = (root / "FEDERATION.md").read_text(encoding="utf-8").splitlines()
+for heading, key in (("Layer", "layer"), ("Role", "role")):
+    expected = manifest.get(key)
+    if not isinstance(expected, str) or not expected.strip():
+        raise SystemExit(f"aift.repo.json must declare a non-empty {key}")
+    marker = f"## {heading}"
+    if federation_lines.count(marker) != 1:
+        raise SystemExit(f"FEDERATION.md must contain exactly one {marker!r} heading")
+    start = federation_lines.index(marker) + 1
+    actual = None
+    for line in federation_lines[start:]:
+        if line.startswith("## "):
+            break
+        if line.strip():
+            actual = line.strip()
+            break
+    if actual is not None and actual.startswith("`") and actual.endswith("`"):
+        actual = actual[1:-1]
+    if actual != expected:
+        raise SystemExit(
+            f"FEDERATION.md {key} mismatch: expected {expected!r}, found {actual!r}"
+        )
+
 capabilities = documents[".aift/capabilities.json"].get("capabilities", [])
 names = [capability.get("name") for capability in capabilities]
 if len(names) != len(set(names)):
