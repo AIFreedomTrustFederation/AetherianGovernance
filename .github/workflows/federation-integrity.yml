@@ -22,6 +22,9 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Verify advertised manifest command
+        run: python3 -m unittest discover -s tests -p 'test_manifest_verify.py' -v
+
       - name: Verify federation contract
         run: .aift/commands/verify.sh
 

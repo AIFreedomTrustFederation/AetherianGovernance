@@ -40,11 +40,13 @@ Pull:
 git pull --ff-only
 ```
 
-Verify:
+Verify federation manifests and tracked shell syntax:
 
 ```bash
-git status --short
+.aift/commands/verify.sh
 ```
+
+This check validates federation metadata and shell syntax, not consent, delegated authority, or policy enforcement.
 
 ## Federation Metadata
 
