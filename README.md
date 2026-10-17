@@ -64,18 +64,18 @@ Repository state can be checked with:
 ```bash
 git status --short
 git pull --ff-only
-git status --short
+.aift/commands/verify.sh
 ```
 
 ### Current implementation and authorization boundary
 
-The checked-in [`aift.repo.json`](aift.repo.json) declares `git status --short` as its `verify` command. This reports local Git changes only; it does **not** validate consent, role assignments, policy enforcement, signed approvals, or an audit trail. The current [`FEDERATION.md`](FEDERATION.md) also describes the repository as a generic `federated` participant, whereas the manifest declares layer `governance`. Consumers should read the actual manifest and reconcile this metadata discrepancy before using it for routing or authority decisions.
+The checked-in [`aift.repo.json`](aift.repo.json) declares `.aift/commands/verify.sh` as its `verify` command. This validates federation metadata and tracked shell syntax; it does **not** validate consent, role assignments, policy enforcement, signed approvals, or an audit trail. The current [`FEDERATION.md`](FEDERATION.md) also describes the repository as a generic `federated` participant, whereas the manifest declares layer `governance`. Consumers should read the actual manifest and reconcile this metadata discrepancy before using it for routing or authority decisions.
 
 The [`docs/manual/README.md`](docs/manual/README.md) identifies a manual-source directory and delegates PDF/publication builds to BookSmith; it is not evidence of an implemented authorization engine. On the checked default branch, there is no root `GOVERNANCE.md` or `package.json` defining a governance test suite. Accordingly, the decision/consent procedure described above is a **constitutional design contract**, not proof that software currently enforces it.
 
 Until a separately tested implementation exists, require an authorized human to review high-impact operations in the system that actually executes them. Preserve the identity of the approver, scope and expiration of delegation, policy version, decision evidence, and outcome in an appropriately access-controlled record. Do not treat an AI recommendation, a repository metadata field, or a successful Git command as authorization to transfer funds, publish private data, deploy production changes, or alter another person's rights.
 
-Those commands verify repository synchronization, not governance legitimacy. A governance decision is verified by matching the action to the actual authority, consent, policy, and resulting system state.
+The status and pull commands concern Git; the verify command checks federation metadata and shell syntax. A governance decision is verified by matching the action to the actual authority, consent, policy, and resulting system state.
 
 ---
 

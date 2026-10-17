@@ -32,6 +32,9 @@ for path in manifest_paths:
             handle, object_pairs_hook=reject_duplicate_keys
         )
 
+if documents["aift.repo.json"].get("commands", {}).get("verify") != ".aift/commands/verify.sh":
+    raise SystemExit("federation verify command must invoke .aift/commands/verify.sh")
+
 expected_repo = documents["aift.repo.json"].get("name")
 if not isinstance(expected_repo, str) or not expected_repo:
     raise SystemExit("aift.repo.json must declare a repository name")
