@@ -69,7 +69,7 @@ git status --short
 
 ### Current implementation and authorization boundary
 
-The checked-in [`aift.repo.json`](aift.repo.json) declares `git status --short` as its `verify` command. This reports local Git changes only; it does **not** validate consent, role assignments, policy enforcement, signed approvals, or an audit trail. The current [`FEDERATION.md`](FEDERATION.md) also describes the repository as a generic `federated` participant, whereas the manifest declares layer `governance`. Consumers should read the actual manifest and reconcile this metadata discrepancy before using it for routing or authority decisions.
+The checked-in [`aift.repo.json`](aift.repo.json) declares `.aift/commands/verify.sh` as its `verify` command, matching the ready capability and the GitHub Actions workflow. The verifier checks federation JSON parsing and repository identity, ready capability paths, declared service events, and tracked shell-script syntax. It requires `python3`, `git`, and a checked-out repository. This is **repository-contract validation only**: it does not validate consent, role assignments, policy enforcement, signed approvals, or an audit trail. [`FEDERATION.md`](FEDERATION.md) now identifies the same `governance` layer as the manifest.
 
 The [`docs/manual/README.md`](docs/manual/README.md) identifies a manual-source directory and delegates PDF/publication builds to BookSmith; it is not evidence of an implemented authorization engine. On the checked default branch, there is no root `GOVERNANCE.md` or `package.json` defining a governance test suite. Accordingly, the decision/consent procedure described above is a **constitutional design contract**, not proof that software currently enforces it.
 

@@ -2,11 +2,11 @@
 
 ## Layer
 
-`federated`
+`governance`
 
 ## Role
 
-federated repository participating in the AIFT operating system
+Aetherian governance, delegated authority, policy, consent, decision records, and constitutional governance interfaces
 
 ## Operating Principle
 
@@ -40,10 +40,10 @@ Pull:
 git pull --ff-only
 ```
 
-Verify:
+Verify (requires `python3`, `git`, and a checked-out repository; validates federation contracts, not human authorization):
 
 ```bash
-git status --short
+.aift/commands/verify.sh
 ```
 
 ## Federation Metadata
