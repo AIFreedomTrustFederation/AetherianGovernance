@@ -6,6 +6,7 @@ cd "$repo_root"
 
 python3 - <<'PY'
 import json
+import os
 import subprocess
 from pathlib import Path, PurePosixPath
 
@@ -70,6 +71,8 @@ for capability in capabilities:
         command_path.resolve(strict=True).relative_to(root.resolve(strict=True))
     except (OSError, ValueError):
         raise SystemExit(f"capability command resolves outside repository: {command!r}")
+    if not os.access(command_path, os.X_OK):
+        raise SystemExit(f"ready capability command is not executable: {command!r}")
 
 event_contract = documents[".aift/events.json"]
 declared_events = []
