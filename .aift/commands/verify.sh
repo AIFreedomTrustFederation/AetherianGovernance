@@ -6,6 +6,7 @@ cd "$repo_root"
 
 python3 - <<'PY'
 import json
+import shlex
 import subprocess
 from pathlib import Path, PurePosixPath
 
@@ -58,11 +59,22 @@ for capability in capabilities:
     if not isinstance(command, str) or not command.strip():
         raise SystemExit(f"ready capability {capability.get('name')!r} has no command")
 
-    candidate = PurePosixPath(command)
-    if len(candidate.parts) == 1 or any(token in command for token in " &;|<>"):
+    # Inspect the executable token, not the entire command string. In particular,
+    # a local script with arguments must not bypass the existence/path checks.
+    try:
+        tokens = shlex.split(command)
+    except ValueError as error:
+        raise SystemExit(f"invalid ready capability command: {command!r}: {error}")
+    if not tokens:
+        raise SystemExit(f"empty ready capability command: {command!r}")
+    executable = tokens[0]
+    candidate = PurePosixPath(executable)
+    # External commands (for example, git or python3) are outside this
+    # repository-path check; do not execute or interpret their arguments.
+    if len(candidate.parts) == 1 and not executable.startswith("./"):
         continue
     if candidate.is_absolute() or ".." in candidate.parts:
-        raise SystemExit(f"unsafe capability command path: {command!r}")
+        raise SystemExit(f"unsafe capability command path: {executable!r}")
     command_path = root.joinpath(*candidate.parts)
     if not command_path.is_file():
         raise SystemExit(f"missing capability command: {command}")
