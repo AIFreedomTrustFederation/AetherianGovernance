@@ -6,6 +6,7 @@ cd "$repo_root"
 
 python3 - <<'PY'
 import json
+import shlex
 import subprocess
 from pathlib import Path, PurePosixPath
 
@@ -58,8 +59,16 @@ for capability in capabilities:
     if not isinstance(command, str) or not command.strip():
         raise SystemExit(f"ready capability {capability.get('name')!r} has no command")
 
-    candidate = PurePosixPath(command)
-    if len(candidate.parts) == 1 or any(token in command for token in " &;|<>"):
+    try:
+        executable = shlex.split(command)[0]
+    except ValueError as error:
+        raise SystemExit(f"malformed ready capability command {command!r}: {error}")
+    candidate = PurePosixPath(executable)
+    # Compound shell commands are not interpreted here; only simple path commands
+    # can be checked without executing the capability.
+    if any(token in command for token in "&;|<>"):
+        continue
+    if len(candidate.parts) == 1 and not executable.startswith("./"):
         continue
     if candidate.is_absolute() or ".." in candidate.parts:
         raise SystemExit(f"unsafe capability command path: {command!r}")
