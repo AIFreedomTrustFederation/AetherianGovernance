@@ -82,7 +82,7 @@ The [`docs/manual/README.md`](docs/manual/README.md) identifies a manual-source 
 
 Until a separately tested implementation exists, require an authorized human to review high-impact operations in the system that actually executes them. Preserve the identity of the approver, scope and expiration of delegation, policy version, decision evidence, and outcome in an appropriately access-controlled record. Do not treat an AI recommendation, a repository metadata field, or a successful Git command as authorization to transfer funds, publish private data, deploy production changes, or alter another person's rights.
 
-Those commands verify repository synchronization, not governance legitimacy. A governance decision is verified by matching the action to the actual authority, consent, policy, and resulting system state.
+The status commands inspect repository state, while `git pull --ff-only` may fetch and fast-forward the current branch; none of these commands independently attests cross-repository synchronization or establishes governance legitimacy. A governance decision is verified by matching the action to the actual authority, consent, policy, and resulting system state.
 
 ---
 
