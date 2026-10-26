@@ -45,6 +45,8 @@ Its federation boundaries are explicit:
 - **Aetherion ↔ Governance:** wallet, treasury, value, custody, escrow, and economic policy require explicit human authority and auditable consent.
 - **BookSmith ↔ Governance:** authorship, publication, rights, organization identity, marketplace visibility, and release authority remain governed relationships.
 
+**Cross-repository integration evidence boundary:** The relationships above describe architectural responsibilities, not independently verified runtime integrations. [`.aift/repo.json`](.aift/repo.json) currently declares no dependencies; [`.aift/services.json`](.aift/services.json) declares a `planned` service with empty `provides` and `requires` lists; and [`.aift/events.json`](.aift/events.json) declares three `planned` published events with no subscriptions. Those declarations alone do not demonstrate live cross-repository consent exchange, operational governance enforcement, or authorization to act on another repository's behalf. Integration and operational claims require separate commit-bound implementation and execution evidence.
+
 The repository already carries `FEDERATION.md`, `aift.repo.json`, and a manual structure under `docs/manual/`. Those are the beginning of the project-specific governance body and should remain aligned with one another.
 
 ---
