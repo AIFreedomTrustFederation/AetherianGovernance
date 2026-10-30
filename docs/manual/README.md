@@ -1,4 +1,4 @@
-# AetherianGovernance UNIX Manual Manual
+# AetherianGovernance UNIX Manual
 
 This directory contains the UNIX-style manual source for this repository.
 
