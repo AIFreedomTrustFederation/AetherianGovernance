@@ -1,4 +1,4 @@
-# AetherianGovernance UNIX Manual Manual Index
+# AetherianGovernance UNIX Manual Index
 
 - `man0/` — Doctrine and introduction
 - `man1/` — User commands
