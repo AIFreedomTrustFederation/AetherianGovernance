@@ -99,3 +99,10 @@ The long-term purpose of AetherianGovernance is therefore not to automate away d
 ### The Return of the Word
 
 In governance, the Word returns as authority made understandable. A request becomes a named question, the question enters a valid decision process, the decision becomes an authorized act, and the act returns as a record that still remembers who decided and why. Governance remains human when power can return to its source and answer for itself.
+
+
+---
+
+## Proposed AIFT Universal OS Integration
+
+The [repository-specific integration guide](docs/aift-universal-os-alignment.md) describes how this project might relate to native, hosted and future embodied AIFT systems: consent and governance research; this does not amend policy, constitutional authority or identity rules. It is a **proposal**, anchored to the [central OS architecture and infographics under review](https://github.com/AIFreedomTrustFederation/AIFT-OS/pull/92), not a current hardware or production capability.
